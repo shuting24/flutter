@@ -1,4 +1,5 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
+import 'package:random_project_name/block.dart';
 
 void main() {
   runApp(const Nameanything());
@@ -7,134 +8,89 @@ void main() {
 class Nameanything extends StatelessWidget {
   const Nameanything({super.key});
 
-  void doSomething(String name) {
-    print('Hello $name');
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color(0xFFF5F7FF),
-
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF5271FF),
-          foregroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              doSomething('Dawood');
-            },
-            icon: const Icon(Icons.admin_panel_settings),
-          ),
-          title: const Center(child: Text("My first App")),
-        ),
-
-        body: Center(
-          child: Column(
+        body: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(height: 40),
-
-              ClipOval(
-                child: Image.asset(
-                  'assets/images/st.png',
-                  width: 200,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
-              const Text(
-                "Shu Ting",
-                style: TextStyle(
-                  color: Color(0xFF263B70),
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Color(0xFFDCE8FF),
-                ),
-              ),
-
-              // Container
-              const SizedBox(height: 10),
-
+              // Item 1
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 19,
-                  vertical: 3,
+                padding: const EdgeInsets.all(14),
+                decoration: const BoxDecoration(
+                  color: Colors.yellowAccent,
                 ),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF5271FF),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Row(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.school, size: 18, color: Colors.white),
-                    SizedBox(width: 10),
-                    Text(
-                      "Student",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    Image.asset('assets/images/st.png', width: 30),
+                    const SizedBox(height: 10),
+                    const Text("Hi Shee"),
+                    const SizedBox(height: 10),
+                    const Text("228742"),
                   ],
                 ),
               ),
+              Expanded(
+                child: Block(
+                  "assets/images/st.png",
+                  "random image",
+                  colours: Colors.green,
+                ),
+              ),
 
-              const SizedBox(height: 30),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // Item 2
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.yellowAccent,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: const BoxDecoration(color: Color(0xFFE0F2FE)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset('assets/images/st.png', width: 30),
-                          const SizedBox(height: 10),
-                          const Text("random Text"),
-                          const SizedBox(height: 10),
-                          const Text("Another random Text"),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(color: Color(0xFFEDE9FE)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset('assets/images/st.png', width: 30),
-                          const SizedBox(height: 10),
-                          const Text("random Text"),
-                          const SizedBox(height: 10),
-                          const Text("Another random Text"),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: const BoxDecoration(color: Color(0xFFFFE4EC)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset('assets/images/st.png', width: 30),
-                          const SizedBox(height: 10),
-                          const Text("random Text"),
-                          const SizedBox(height: 10),
-                          const Text("Another random Text"),
-                        ],
-                      ),
-                    ),
+                    Image.asset('assets/images/st.png', width: 30),
+                    const SizedBox(height: 10),
+                    const Text("Hi Ali"),
+                    const SizedBox(height: 10),
+                    const Text("wuhuu"),
                   ],
+                ),
+              ),
+              Expanded(
+                child: Block(
+                  "assets/images/st.png",
+                  "random image",
+                  colours: Colors.blue,
+                ),
+              ),
+
+              // Item 3
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  color: Colors.yellowAccent,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/images/st.png', width: 30),
+                    const SizedBox(height: 10),
+                    const Text("random Text"),
+                    const SizedBox(height: 10),
+                    const Text("Another random Text"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Block(
+                  "assets/images/st.png",
+                  "random image",
+                  colours: Colors.red,
                 ),
               ),
             ],
