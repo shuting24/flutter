@@ -1,101 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:random_project_name/block.dart';
+import "package:flutter/material.dart";
+import 'package:random_project_name/screen/home.dart';
 
 void main() {
-  runApp(const Nameanything());
+  runApp(const MainPage());
 }
 
-class Nameanything extends StatelessWidget {
-  const Nameanything({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  ThemeMode _themeMode = ThemeMode.light;
+
+  void _toggleTheme() {
+    setState(() {
+      // _themeMode = _themeMode == ThemeMode.light
+      //     ? ThemeMode.dark
+      //     : ThemeMode.light;
+
+      if (_themeMode == ThemeMode.light) {
+        _themeMode = ThemeMode.dark;
+      } else {
+        _themeMode = ThemeMode.light;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Item 1
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: const BoxDecoration(
-                  color: Colors.yellowAccent,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/images/st.png', width: 30),
-                    const SizedBox(height: 10),
-                    const Text("Hi Shee"),
-                    const SizedBox(height: 10),
-                    const Text("228742"),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Block(
-                  "assets/images/st.png",
-                  "random image",
-                  colours: Colors.green,
-                ),
-              ),
-
-              // Item 2
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: const BoxDecoration(
-                  color: Colors.yellowAccent,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/images/st.png', width: 30),
-                    const SizedBox(height: 10),
-                    const Text("Hi Ali"),
-                    const SizedBox(height: 10),
-                    const Text("wuhuu"),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Block(
-                  "assets/images/st.png",
-                  "random image",
-                  colours: Colors.blue,
-                ),
-              ),
-
-              // Item 3
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  color: Colors.yellowAccent,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/images/st.png', width: 30),
-                    const SizedBox(height: 10),
-                    const Text("random Text"),
-                    const SizedBox(height: 10),
-                    const Text("Another random Text"),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Block(
-                  "assets/images/st.png",
-                  "random image",
-                  colours: Colors.red,
-                ),
-              ),
-            ],
-          ),
-        ),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: _themeMode,
+      home: Home(
+        isDarkMode: _themeMode == ThemeMode.dark,
+        onToggleTheme: _toggleTheme,
       ),
     );
   }
